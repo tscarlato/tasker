@@ -1,0 +1,27 @@
+<div class = "graybox">
+    <h1> tasks </h1>
+        
+        
+
+         <% @testarray.each do |task| %>
+            
+            <div class = "taskcard">
+              <td><%= task.title %></td>
+              <td><%= task.order %></td>
+              <td><%= link_to 'Destroy', task_path(task),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %></td>              <br>
+         
+            </div>
+        <% end %>
+        
+        <form action = "/addcard" method = "post">
+            <input type = "text" name = "title">
+           
+            <button type = "submit"> Add a card </button>
+            <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
+
+        </form>
+
+</div>
+
